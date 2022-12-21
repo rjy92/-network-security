@@ -14,3 +14,6 @@
 3. 回车即可发现，页面出现弹框。
 
 ### DOM 型 XSS 攻击
+
+1. XSS 目录下，直接访问 views/input.html
+2. 在 input 中输入<script>alert(12)</script>
