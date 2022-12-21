@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- 
+        内容一般使用富文本编辑器，富文本编辑器最终产生的结果：HTML 格式的字符串
+        Web 后台就会把文章内容存储到数据库中，用于文章详情展示
+        当有用户查看文章详情的时候，就会渲染文章内容，
+      -->
+	</head>
+	<body>
+		<!-- 这里是后端渲染的内容 -->
+		<h2>标题：{{ article.title }}</h2>
+		<div>内容：{{@ article.body }}</div>
+		<!-- <form action="">
+    <div>
+      <label for="">标题</label>
+      <input name="title" type="text">
+    </div>
+    <div>
+      <label for="">内容</label>
+      
+      <input name="body" type="text">
+    </div>
+    <div>
+      <button>提交</button>
+    </div>
+  </form> -->
+	</body>
+</html>

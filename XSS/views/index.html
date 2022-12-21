@@ -1,0 +1,43 @@
+<!-- 这个页面时后端渲染出来的，整个页面都是模板字符串 -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>{{ foo }}</h1>
+		<!-- 图片是绑定到属性中的 -->
+		<img src="{{@ img }}" alt="" />
+
+		<form action="/" method="GET">
+			<div>
+				<label for="">输入内容开始搜索：</label>
+				<input name="search" type="text" />
+			</div>
+			<div>
+				<button>搜索</button>
+			</div>
+		</form>
+		{{ if search }}
+		<div>
+			<!-- 大都数的模板引擎都支持基本的 XSS 攻击防御 -->
+			{{@ search }} 的搜索结果如下：
+			<ul>
+				<li>xxxx</li>
+				<li>xxxx</li>
+				<li>xxxx</li>
+				<li>xxxx</li>
+				<li>xxxx</li>
+				<li>xxxx</li>
+			</ul>
+		</div>
+		{{ /if }}
+		<!-- 
+            攻击者一般会把带有 XSS 的请求链接发给你，你去访问，中招了。
+            反射型主要是通过 url
+        -->
+	</body>
+</html>
