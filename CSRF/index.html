@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 客户端渲染的 XSS -->
+  <div id="app">
+    <h1>XSS</h1>
+    <div v-html="content"></div>
+    <div>{{ content}}</div>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        // Vue 内部是通过 innerHTML、textContent 来给节点设置内容的
+        // innerHTML、textContent 默认就会 <> 符号进行转码
+        content: `<img src="xxx" onerror="alert(localStorage.getItem('foo'))">`
+
+        // content: '<img src="xxx" onerror="alert(123)">'
+        // content: '<script>alert(123)<\/script>' // 文章内容
+        // content: '<h2>hello world</h2>' // 文章内容
+      }
+    })
+  </script>
+</body>
+</html>
